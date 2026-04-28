@@ -1,0 +1,81 @@
+/* Futuristic Sci-Fi Design System */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap');
+
+:root {
+    --primary-neon: #00f2ff;
+    --secondary-neon: #7000ff;
+    --accent-red: #ff0055;
+    --bg-dark: #0a0b10;
+    --card-bg: rgba(16, 18, 27, 0.8);
+    --border-glow: rgba(0, 242, 255, 0.3);
+}
+
+.stApp {
+    background-color: var(--bg-dark);
+    color: #e0e0e0;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--primary-neon);
+    text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+}
+
+/* Glassmorphism Cards */
+.metric-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-glow);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+    border-color: var(--primary-neon);
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+/* Neon Buttons */
+.stButton>button {
+    background: transparent;
+    color: var(--primary-neon);
+    border: 1px solid var(--primary-neon);
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.stButton>button:hover {
+    background: var(--primary-neon);
+    color: var(--bg-dark);
+    box-shadow: 0 0 15px var(--primary-neon);
+}
+
+/* Sidebar Customization */
+.css-1d391kg {
+    background-color: #0f111a;
+}
+
+/* Animated Glow */
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+.neon-glow {
+    animation: pulse 2s infinite;
+    color: var(--primary-neon);
+}
+    
