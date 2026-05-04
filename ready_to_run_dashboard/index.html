@@ -78,6 +78,35 @@
 
     <!-- Main Content -->
     <main class="ml-80 mr-12 py-12">
+        <!-- Top Bar -->
+        <div class="flex justify-between items-center mb-12 glass px-8 py-4">
+            <div class="flex items-center gap-6">
+                <div class="flex flex-col">
+                    <span id="live-clock" class="text-2xl font-bold text-white tracking-tighter">00:00:00</span>
+                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Global Grid Time</span>
+                </div>
+                <div class="h-8 w-px bg-white/10"></div>
+                <div class="flex items-center gap-3">
+                    <i data-lucide="cloud-sun" class="text-yellow-400"></i>
+                    <div class="flex flex-col">
+                        <span class="text-sm font-bold text-white">32°C</span>
+                        <span class="text-[10px] font-bold text-slate-500 uppercase">New Delhi, IN</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="flex flex-col items-end mr-2">
+                    <span id="user-greeting" class="text-sm font-bold text-white">Sanjiv Keerthi</span>
+                    <button onclick="logout()" class="text-[9px] font-bold text-emerald-400 uppercase hover:underline">Sign Out</button>
+                </div>
+                <button class="p-2 glass hover:bg-white/10 rounded-xl transition-all">
+                    <i data-lucide="bell" size="20" class="text-slate-400"></i>
+                </button>
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-emerald-500 to-blue-500 p-0.5">
+                    <div class="w-full h-full rounded-full bg-[#0f172a] flex items-center justify-center text-xs font-bold text-white">SJ</div>
+                </div>
+            </div>
+        </div>
 
         <!-- ROUTE AI TAB -->
         <div id="tab-route" class="tab-content active space-y-8">
@@ -197,9 +226,219 @@
                 </div>
             </section>
         </div>
-        <div id="tab-dashboard" class="tab-content"><h1 class="text-white text-4xl font-bold">Dashboard</h1><p class="text-slate-400 mt-4">Fleet health monitoring active.</p></div>
-        <div id="tab-simulator" class="tab-content"><h1 class="text-white text-4xl font-bold">Simulator</h1><p class="text-slate-400 mt-4">Ground dynamics active.</p></div>
-        <div id="tab-analytics" class="tab-content"><h1 class="text-white text-4xl font-bold">Analytics</h1><p class="text-slate-400 mt-4">Efficiency metrics active.</p></div>
+        <!-- DASHBOARD TAB -->
+        <div id="tab-dashboard" class="tab-content space-y-8">
+            <h1 class="text-4xl font-bold text-white">Fleet Command Center</h1>
+            <div class="grid grid-cols-5 gap-6">
+                <div class="glass-card border-l-4 border-l-emerald-500">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase">Active Vehicles</p>
+                    <h3 class="text-2xl font-bold text-white">124</h3>
+                    <p class="text-[10px] text-emerald-400 mt-1">+12% from last hour</p>
+                </div>
+                <div class="glass-card border-l-4 border-l-blue-500">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase">Charging Now</p>
+                    <h3 class="text-2xl font-bold text-white">18</h3>
+                    <p class="text-[10px] text-blue-400 mt-1">4 Fast / 14 Normal</p>
+                </div>
+                <div class="glass-card border-l-4 border-l-yellow-500">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase">Avg Battery</p>
+                    <h3 class="text-2xl font-bold text-white">74%</h3>
+                    <p class="text-[10px] text-yellow-400 mt-1">Fleet wide average</p>
+                </div>
+                <div class="glass-card border-l-4 border-l-purple-500">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase">Total Today</p>
+                    <h3 class="text-2xl font-bold text-white">8,420 KM</h3>
+                    <p class="text-[10px] text-purple-400 mt-1">Across all sectors</p>
+                </div>
+                <div class="glass-card border-l-4 border-l-green-500">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase">CO₂ Saved</p>
+                    <h3 class="text-2xl font-bold text-white">1.2 Tons</h3>
+                    <p class="text-[10px] text-green-400 mt-1">Eco-impact today</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-12 gap-8">
+                <div class="col-span-8 glass-card p-0 overflow-hidden">
+                    <div class="p-6 border-b border-white/5 flex justify-between items-center">
+                        <h3 class="font-bold text-white">Live Fleet Status</h3>
+                        <button class="text-xs text-emerald-400 font-bold hover:underline">View All Vehicles</button>
+                    </div>
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-white/5 text-slate-400 uppercase font-bold">
+                            <tr>
+                                <th class="p-4">Vehicle ID</th>
+                                <th class="p-4">Driver Name</th>
+                                <th class="p-4">Battery</th>
+                                <th class="p-4">Location</th>
+                                <th class="p-4">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white/5">
+                            <tr class="hover:bg-white/5 transition-all">
+                                <td class="p-4 font-bold text-emerald-400">EV-OPTIMA-402</td>
+                                <td class="p-4 text-white">Arjun Sharma</td>
+                                <td class="p-4 text-white">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-12 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                                            <div class="h-full bg-emerald-500" style="width: 82%;"></div>
+                                        </div>
+                                        <span>82%</span>
+                                    </div>
+                                </td>
+                                <td class="p-4 text-slate-400">Salem, TN</td>
+                                <td class="p-4"><span class="bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded text-[10px] font-bold">DRIVING</span></td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition-all">
+                                <td class="p-4 font-bold text-emerald-400">EV-OPTIMA-118</td>
+                                <td class="p-4 text-white">Rahul Varma</td>
+                                <td class="p-4 text-white">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-12 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                                            <div class="h-full bg-blue-500" style="width: 15%;"></div>
+                                        </div>
+                                        <span>15%</span>
+                                    </div>
+                                </td>
+                                <td class="p-4 text-slate-400">Chennai Hub-A</td>
+                                <td class="p-4"><span class="bg-blue-500/20 text-blue-400 px-2 py-1 rounded text-[10px] font-bold">CHARGING</span></td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition-all">
+                                <td class="p-4 font-bold text-emerald-400">EV-OPTIMA-905</td>
+                                <td class="p-4 text-white">Sanjay Dutt</td>
+                                <td class="p-4 text-white">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-12 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                                            <div class="h-full bg-yellow-500" style="width: 64%;"></div>
+                                        </div>
+                                        <span>64%</span>
+                                    </div>
+                                </td>
+                                <td class="p-4 text-slate-400">Bangalore North</td>
+                                <td class="p-4"><span class="bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded text-[10px] font-bold">IDLE</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-span-4 space-y-6">
+                    <div class="glass-card">
+                        <h3 class="font-bold text-white mb-4">Critical Alerts</h3>
+                        <div class="space-y-3">
+                            <div class="flex gap-3 p-3 bg-red-500/10 border border-red-500/20 rounded-xl">
+                                <i data-lucide="alert-triangle" class="text-red-400 w-5 h-5"></i>
+                                <div>
+                                    <p class="text-xs font-bold text-red-400">Low Battery - EV-OPTIMA-118</p>
+                                    <p class="text-[10px] text-slate-400 mt-1">Below 15% threshold. Rerouting to nearest hub.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-xl">
+                                <i data-lucide="wrench" class="text-yellow-400 w-5 h-5"></i>
+                                <div>
+                                    <p class="text-xs font-bold text-yellow-400">Service Due - EV-OPTIMA-402</p>
+                                    <p class="text-[10px] text-slate-400 mt-1">Scheduled maintenance in 240 KM.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card">
+                        <h3 class="font-bold text-white mb-4">Quick Actions</h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button class="p-3 bg-white/5 rounded-xl border border-white/5 hover:bg-white/10 transition-all text-center">
+                                <i data-lucide="plus" class="mx-auto text-emerald-400 mb-1"></i>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase">Assign Route</span>
+                            </button>
+                            <button class="p-3 bg-white/5 rounded-xl border border-white/5 hover:bg-white/10 transition-all text-center">
+                                <i data-lucide="search" class="mx-auto text-blue-400 mb-1"></i>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase">Find Charger</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIMULATOR TAB -->
+        <div id="tab-simulator" class="tab-content space-y-8">
+            <h1 class="text-4xl font-bold text-white">Dynamics Simulator</h1>
+            <div class="grid grid-cols-12 gap-8">
+                <div class="col-span-4 glass-card space-y-6">
+                    <h3 class="text-lg font-bold text-white border-b border-white/10 pb-4 flex items-center gap-2">
+                        <i data-lucide="settings" class="text-emerald-400"></i> Physics Parameters
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-[10px] font-bold text-slate-400 uppercase mb-2">
+                                <span>Initial Battery</span> <span id="sim-batt-val" class="text-emerald-400">80%</span>
+                            </div>
+                            <input type="range" id="sim-batt-slider" min="1" max="100" value="80" oninput="runQuickSim()" class="w-full accent-emerald-500">
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-[10px] font-bold text-slate-400 uppercase mb-2">
+                                <span>Passenger Load</span> <span id="sim-load-val" class="text-emerald-400">2 Persons</span>
+                            </div>
+                            <input type="range" id="sim-load-slider" min="1" max="50" value="2" oninput="runQuickSim()" class="w-full accent-emerald-500">
+                        </div>
+                        <div>
+                             <button id="ac-toggle" onclick="toggleAC()" class="w-full py-2 bg-emerald-500/20 border border-emerald-500/40 rounded-xl text-xs font-bold text-emerald-400 transition-all">
+                                 CLIMATE CONTROL: ON (AC)
+                             </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-8 space-y-8">
+                    <div class="grid grid-cols-3 gap-6 text-center">
+                        <div class="glass-card">
+                            <p class="text-[10px] font-bold text-slate-400 uppercase">Projected Range</p>
+                            <h2 id="out-range" class="text-4xl font-bold text-emerald-400">0</h2>
+                            <p class="text-[10px] text-slate-500 mt-1">Kilometers (KM)</p>
+                        </div>
+                        <div class="glass-card">
+                            <p class="text-[10px] font-bold text-slate-400 uppercase">Energy Drain</p>
+                            <h2 id="out-drain" class="text-4xl font-bold text-blue-400">0</h2>
+                            <p class="text-[10px] text-slate-500 mt-1">kWh / 100km</p>
+                        </div>
+                        <div class="glass-card">
+                            <p class="text-[10px] font-bold text-slate-400 uppercase">Efficiency</p>
+                            <h2 id="out-eff" class="text-4xl font-bold text-yellow-400">0</h2>
+                            <p class="text-[10px] text-slate-500 mt-1">Score Matrix</p>
+                        </div>
+                    </div>
+                    <div class="glass-card h-[350px]">
+                        <canvas id="simChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ANALYTICS TAB -->
+        <div id="tab-analytics" class="tab-content space-y-8">
+            <h1 class="text-4xl font-bold text-white">Efficiency Matrix</h1>
+            <div class="grid grid-cols-12 gap-8">
+                <div class="col-span-8 glass-card">
+                    <div class="flex justify-between items-center mb-8">
+                        <h3 class="font-bold text-white">Fleet Battery Utilization</h3>
+                        <select class="bg-white/5 border border-white/10 rounded-lg text-xs px-2 py-1 text-slate-400 outline-none">
+                            <option>Last 7 Days</option>
+                            <option>Last 30 Days</option>
+                        </select>
+                    </div>
+                    <div class="h-[300px]">
+                        <canvas id="analyticsLineChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-span-4 glass-card">
+                    <h3 class="font-bold text-white mb-8">Fleet Composition</h3>
+                    <div class="h-[300px] flex items-center justify-center">
+                        <canvas id="analyticsDonutChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-span-12 glass-card">
+                    <h3 class="font-bold text-white mb-8">Weekly Distance Performance</h3>
+                    <div class="h-[300px]">
+                        <canvas id="analyticsBarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <script>
@@ -382,6 +621,194 @@
             }
         }
 
+        // --- GLOBAL UI ---
+        function updateClock() {
+            const now = new Date();
+            const clock = document.getElementById('live-clock');
+            if(clock) clock.innerText = now.toLocaleTimeString('en-US', { hour12: false });
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        function logout() {
+            if(confirm("Are you sure you want to sign out?")) {
+                window.location.reload();
+            }
+        }
+
+        // --- SIMULATOR ENGINE ---
+        let acActive = true;
+        let simChart;
+
+        function toggleAC() {
+            acActive = !acActive;
+            const btn = document.getElementById('ac-toggle');
+            btn.innerText = acActive ? "CLIMATE CONTROL: ON (AC)" : "CLIMATE CONTROL: OFF (ECONOMY)";
+            btn.classList.toggle('bg-emerald-500/20', acActive);
+            btn.classList.toggle('text-emerald-400', acActive);
+            btn.classList.toggle('bg-blue-500/20', !acActive);
+            btn.classList.toggle('text-blue-400', !acActive);
+            runQuickSim();
+        }
+
+        function runQuickSim() {
+            const batt = document.getElementById('sim-batt-slider').value;
+            const load = document.getElementById('sim-load-slider').value;
+            document.getElementById('sim-batt-val').innerText = batt + '%';
+            document.getElementById('sim-load-val').innerText = load + ' Persons';
+
+            // Physics Logic
+            const baseRange = 500; // KM
+            const loadImpact = load * 0.015; // 1.5% per person
+            const acImpact = acActive ? 0.12 : 0; // 12% for AC
+            
+            const projectedRange = Math.round(baseRange * (batt/100) * (1 - loadImpact) * (1 - acImpact));
+            const energyDrain = (12.5 + (load * 0.4) + (acActive ? 2.1 : 0)).toFixed(1);
+            const efficiencyScore = Math.round(98 - (load * 0.8) - (acActive ? 5 : 0));
+
+            document.getElementById('out-range').innerText = projectedRange;
+            document.getElementById('out-drain').innerText = energyDrain;
+            document.getElementById('out-eff').innerText = efficiencyScore + '%';
+
+            updateSimChart(batt, load);
+        }
+
+        function updateSimChart(batt, load) {
+            const ctx = document.getElementById('simChart');
+            if(!ctx) return;
+            
+            const dataPoints = [];
+            let currentBatt = parseInt(batt);
+            for(let i=0; i<=10; i++) {
+                dataPoints.push(currentBatt);
+                currentBatt = Math.max(0, currentBatt - (10 - (load * 0.1)));
+            }
+
+            if(simChart) {
+                simChart.data.datasets[0].data = dataPoints;
+                simChart.update();
+            } else {
+                simChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['0km', '50km', '100km', '150km', '200km', '250km', '300km', '350km', '400km', '450km', '500km'],
+                        datasets: [{
+                            label: 'Battery Discharge Projection',
+                            data: dataPoints,
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            y: { beginAtZero: true, max: 100, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#64748b' } },
+                            x: { grid: { display: false }, ticks: { color: '#64748b' } }
+                        }
+                    }
+                });
+            }
+        }
+
+        // --- ANALYTICS ENGINE ---
+        function initAnalytics() {
+            // Line Chart
+            const lineCtx = document.getElementById('analyticsLineChart');
+            if(lineCtx) {
+                new Chart(lineCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                        datasets: [{
+                            label: 'Energy Used (kWh)',
+                            data: [420, 380, 510, 440, 590, 320, 280],
+                            borderColor: '#3b82f6',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            fill: true,
+                            tension: 0.4
+                        }, {
+                            label: 'Distance (KM)',
+                            data: [1200, 1100, 1450, 1250, 1600, 900, 850],
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { labels: { color: '#94a3b8', font: { size: 10 } } } },
+                        scales: {
+                            y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#64748b' } },
+                            x: { grid: { display: false }, ticks: { color: '#64748b' } }
+                        }
+                    }
+                });
+            }
+
+            // Donut Chart
+            const donutCtx = document.getElementById('analyticsDonutChart');
+            if(donutCtx) {
+                new Chart(donutCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Express Cargo', 'Long Range', 'City Transit'],
+                        datasets: [{
+                            data: [45, 30, 25],
+                            backgroundColor: ['#10b981', '#3b82f6', '#f59e0b'],
+                            borderWidth: 0,
+                            hoverOffset: 10
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { position: 'bottom', labels: { color: '#94a3b8', padding: 20 } } }
+                    }
+                });
+            }
+
+            // Bar Chart
+            const barCtx = document.getElementById('analyticsBarChart');
+            if(barCtx) {
+                new Chart(barCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                        datasets: [{
+                            label: 'Total Deliveries',
+                            data: [2400, 2800, 2600, 3200],
+                            backgroundColor: '#10b981',
+                            borderRadius: 8
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#64748b' } },
+                            x: { grid: { display: false }, ticks: { color: '#64748b' } }
+                        }
+                    }
+                });
+            }
+        }
+
+        // Initialize components when tab changes
+        const originalShowTab = showTab;
+        showTab = function(tabId) {
+            originalShowTab(tabId);
+            if(tabId === 'simulator') runQuickSim();
+            if(tabId === 'analytics') setTimeout(initAnalytics, 100);
+        };
+
+        // Start with Route AI
         showTab('route');
     </script>
 </body>
